@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Add Category:</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="categoryDetailsForm" (ngSubmit)="save()">
+    <div class="mat-form-field--inline">
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="name" type="text" required />
+        <mat-error *ngFor="let validation of validation_messages.name">
+          <mat-error class="error-message"
+            *ngIf="categoryDetailsForm.get('name').hasError(validation.type) && (categoryDetailsForm.get('name').dirty || categoryDetailsForm.get('name').touched)">
+            {{validation.message}}</mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Ordering" formControlName="ordering" type="text" />
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px" style="margin-left: 36px;">
+      <button style="margin: 13px" mat-raised-button type="submit" [disabled]="!categoryDetailsForm.valid"
+        color="primary">Submit</button>
+      <button style="margin: 13px" mat-raised-button type="button" (click)="dialogRef.close()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,258 @@
+.mat-form-field--inline {
+  img {
+      padding: 23px;
+      height: 120px;
+  }
+}
+
+.ng-hide:not(.ng-hide-animate) {
+    display: none !important;
+}
+
+.md-button.md-raised:not([disabled]) {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    color: currentColor;
+    border-radius: 3px;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    padding: 0 6px;
+    line-height: 36px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+ .mat-form-field--inline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mat-form-field--inline .mat-form-field {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.mat-form-field--inline .mat-form-field:nth-child(1) {
+  margin-right: 50px;
+}
+
+.mat-form-field-infix {
+    padding: 0.5em 0;
+    border-top: 0px !important;
+}
+
+agm-map {
+  height: 200px; width:100%;
+}
+.fxFlex-map {
+  width: 48%;
+  margin-left: 27px;
+}
+.fxFlex-input-field {
+  width: 50%;
+}
+.fxFlex-input-field :hover {
+  
+}
+.autosearch-li {
+  list-style: none;
+}
+.mat-card-title {
+    font-size: 24px;
+    font-weight: 500;
+}
+.img-input {
+  margin-left: 1%;
+}
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: 0 0 6px 2px rgba(0,0,0,.2);
+}
+
+mat-card {
+  margin-bottom: 20px;
+}
+
+mat-card-actions {
+  text-align: center;
+}
+
+mat-card-content {
+  padding: 0 20px;
+}
+
+.mat-raised-button {
+  margin-right: 10px !important;
+}
+
+.mat-paginator, .mat-paginator-page-size .mat-select-trigger {
+  font-family: Fontil Sans, monospace;
+  font-size: 18px;
+  width: 100%;
+}
+
+.mat-add {
+  cursor: pointer;
+  color:#228B22;
+}
+
+.mat-delete {
+  cursor: pointer;
+  color:red
+}
+
+.mat-tab-body-content {
+  overflow: hidden !important;
+}
+
+/* Mat card css end here */
+
+/* Other common css start here */
+
+.description-box {
+  padding: 20px;
+  margin: 20px 0; 
+}
+
+// .example-header-image {
+//   img {
+//     height: 120px;
+//   }
+// }
+
+.artist-img {
+ img {
+   width: 50px;
+   height: 50px;
+ }
+}
+
+.gallery {
+  .gallery-card {
+    box-shadow: 0 0 6px 2px rgba(0,0,0,.2);
+    padding: 30px;
+
+    .example-card {
+      width: 131px;
+      padding-bottom: 30px;
+
+      img {
+        height: 120px;
+      }
+    }
+  }
+}
+
+.qr-image {
+  right: 0;
+  top: 0;
+  position: absolute;
+
+  img {
+    width: 132px;
+    height: 132px;
+  }
+}
+
+.info-line {
+  .info {
+    mat-card-subtitle {
+      padding-right: 120px;
+    }
+  }
+}
+
+.full-image {
+  text-align: center;
+  img {
+    width: auto;
+    height: 350px;
+  }
+}
+
+/* Other common css ends here */
+
+/* Mat table css start here */
+
+table {
+  width: 100%;
+ // table-layout: fixed;
+
+  mat-row {
+    padding: 10px 0;
+
+    mat-cell {
+      word-break: break-word;
+      a {
+        word-break: break-word;
+      }
+    }
+  }
+}
+
+/* Mat table css ends here */
+
+/* Mat breadcrumb css start here */
+
+span .mat-button-wrapper {
+  text-transform: capitalize;
+}
+
+/* Mat breadcrumb css ends here */
+
+.add-category-btn {
+  margin-right: 15px !important;
+  width: 89% !important;
+
+  .mat-form-field-wrapper {
+    width: 440px;
+  }
+}
+
+/* Html Editor Css Starts here */
+
+.mat-ngx-wig {
+  height: 215px;
+  overflow: hidden;
+  border-right: 1px solid rgba(0,0,0,.42);
+  border-left: 1px solid rgba(0,0,0,.42);
+  border-top: 1px solid rgba(0,0,0,.42);
+}
+.editor-li {
+  align-items: initial !important;
+}
+.nw-editor {
+  height: 170px !important;
+}
+.nw-editor__res {
+  max-height: 170px !important;
+}
+
+/* Html Editor Css ends here */
+
+.print-table {
+  thead {
+    tr {
+      th {
+        margin-right: 100px;
+        width: 410px;
+      }
+    }
+  }
+}
+
+.art-details {
+  .info-line {
+    width: -webkit-fill-available;
+    .title {
+      text-align: center;
+    }
+    .qr-image {
+      top: 400px;
+    }
+  }  
+}
+
+.mat-progress-spinner {
+  margin: auto;
+}

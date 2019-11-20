@@ -1,0 +1,132 @@
+<mat-card>
+      <mat-toolbar><mat-card-title>{{ title }}</mat-card-title></mat-toolbar>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit(model)" class="matero-form-horizontal" autocomplete="off">
+<!-- 
+      	<li class="mat-form-field--inline">
+		    <label for="input-file-id" class="md-button md-raised md-primary">Select Profile Pic</label>
+		    <img [src]="url" onError="this.src='assets/images/no-image.png';"> <br/>
+			<input type="file" accept="image/x-png,image/gif,image/jpeg" formControlName="image" class="ng-hide" id="input-file-id" (change)="onFileChanged($event)"/>
+			<mat-error *ngIf="userForm.get('image').invalid">Please select image</mat-error>
+		</li> -->
+		
+      	<li class="mat-form-field--inline">
+	      	<mat-form-field>
+	          <mat-label>Name</mat-label>
+	          <input type="text" matInput placeholder="Name" formControlName="username" required>
+	          <mat-error *ngIf="userForm.get('username').invalid">Please enter username</mat-error>
+	        </mat-form-field>
+
+	       	<mat-form-field>
+	          <mat-label>Phone</mat-label>
+	          <input type="text" matInput placeholder="Phone" formControlName="phone" required>
+	          <mat-icon matSuffix>smartphone</mat-icon>
+	          <mat-error *ngIf="userForm.get('phone').invalid">Please enter phone</mat-error>
+	        </mat-form-field>
+      	</li>
+
+      	<li class="mat-form-field--inline">
+      		<mat-form-field>
+	          <mat-label>Email</mat-label>
+	          <input type="email" matInput placeholder="Email" formControlName="email" required>
+	          <mat-error *ngIf="userForm.get('email').invalid">{{getErrorMessage(userForm)}}</mat-error>
+	        </mat-form-field>
+
+	        <mat-form-field>
+	          <mat-label>Password</mat-label>
+	          <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+			  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+	          <mat-error *ngIf="userForm.get('password').invalid">Please enter password</mat-error>
+	        </mat-form-field>
+      	</li>
+
+      	<li class="mat-form-field--inline">
+	        <mat-form-field>
+	          <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date_of_birth" required>
+	          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+	          <mat-datepicker #picker></mat-datepicker>
+	          <mat-error *ngIf="userForm.get('date_of_birth').invalid">Please choose date</mat-error>
+	        </mat-form-field>
+
+	        <mat-form-field>
+	          <mat-label>Organisation</mat-label>
+	          <input matInput type="text" placeholder="Organisation" formControlName="organisation" required>
+	          <mat-error *ngIf="userForm.get('organisation').invalid">Please enter organisation</mat-error>
+	        </mat-form-field>
+      	</li>
+
+      	<li class="mat-form-field--inline">  
+      		<mat-form-field>
+	          <mat-label>Website</mat-label>
+	          <input matInput type="url" formControlName="weblink" (keypress)="checkUrl($event.target.value, urlType='weblink')" autocomplete="off"/>
+		      <mat-error *ngIf="weblinkurl.invalid">
+		        Please provide Valid web link      
+		      </mat-error>
+		      <mat-hint>URL: ( https://www.example.com ) </mat-hint>
+	        </mat-form-field>
+
+	        <mat-form-field>
+	          <mat-label>Videolink</mat-label>
+	          <input matInput  type="url" formControlName="videolink" (keypress)="checkUrl($event.target.value, urlType='videolink')" autocomplete="off"/>
+		      <mat-error *ngIf="videolinkurl.invalid">
+		        Please provide Valid video link 
+		      </mat-error>
+		      <mat-hint>URL: ( https://www.example.com ) </mat-hint>
+	        </mat-form-field>
+      	</li><br>
+
+      	<!-- <li class="mat-form-field--inline">
+	        <div fxFlex fxFlexAlign="center" class="autocomplete-container fxFlex-input-field">
+		      <mat-google-maps-autocomplete [(address)]="address" (onAutocompleteSelected)="onAutocompleteSelected($event)" (onLocationSelected)="onLocationSelected($event)">
+		      </mat-google-maps-autocomplete>
+		    </div>
+
+		    <div fxFlex class="fxFlex-map">
+		      <agm-map class="agm-map" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+		        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+		      </agm-map>
+		    </div>
+      	</li><br> -->
+
+      	<li class="mat-form-field--inline">
+		    <mat-form-field> 
+		      <mat-select placeholder="Select Roles" (selectionChange)="onRoleSelect($event.value)" [compareWith]="compareRoles"
+		        [(ngModel)]="selectedRoles" formControlName="role" name="role" multiple required>
+		        <mat-option *ngFor="let role of roles" [value]="role"> {{ role.name }} </mat-option>
+		      </mat-select>
+		      <mat-error>
+		        Please Select Roles.
+		      </mat-error>
+		    </mat-form-field>
+		</li>
+
+		<li class="mat-form-field--inline">
+		    <mat-form-field *ngIf=showDeathdate>
+	          <input matInput [matDatepicker]="date_of_death" placeholder="Choose date of dealth"
+	                 formControlName="date_of_death">
+	          <mat-datepicker-toggle matSuffix [for]="date_of_death"></mat-datepicker-toggle>
+	          <mat-datepicker #date_of_death></mat-datepicker>
+	        </mat-form-field>
+<!-- 
+		    <mat-form-field *ngIf=showCategories>
+		      <mat-select placeholder="Search Category" (openedChange)="resetSearch($event)" [compareWith]="compareCategory"
+		        [(ngModel)]="categoryfetch" formControlName="category" name="category" multiple>
+		        <mat-select-search (keyup)="onKeyPress($event.target.value)" [placeholderLabel]="categoryplaceholderLabel"
+		          [noEntriesLabel]="categorynoEntriesLabel"></mat-select-search>
+		        <mat-option *ngFor="let category of filteredCategories" [value]="category">
+		          {{category.name}}
+		        </mat-option>
+		      </mat-select>
+		      <mat-error>
+		        Please Select Category.
+		      </mat-error>
+		    </mat-form-field> -->
+	    </li>
+
+        <div fxLayout="row" fxLayoutGap="20px" style="margin-left: 36px;margin-top: 30px;">
+		    <button mat-raised-button color="primary" type="submit" class="m-t-8 submit-button">Save</button>
+		    <button style="margin: 13px" mat-raised-button type="reset" color="warn">Reset</button>
+		</div>
+		 <pre>form value: <br>{{userForm.value | json}}</pre> 
+      </form>
+
+    </mat-card>

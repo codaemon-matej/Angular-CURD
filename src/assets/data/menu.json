@@ -1,0 +1,32 @@
+{
+  "menu": [
+    {
+      "state": "dashboard",
+      "name": "Dashboard",
+      "type": "link",
+      "icon": "dashboard",
+      "badge": {
+        "color": "red-500",
+        "value": "5"
+      }
+    },
+    {
+      "state": "user",
+      "name": "User",
+      "type": "sub",
+      "icon": "color_lens",
+      "children": [
+        {
+          "state": "user-create",
+          "name": "Add User",
+          "type": "link"
+        },
+        {
+          "state": "userlist",
+          "name": "View Users",
+          "type": "link"
+        }
+      ]
+    }
+  ]
+}
